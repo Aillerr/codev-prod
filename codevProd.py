@@ -14,10 +14,11 @@ def getAnnualProd():
   cursor.execute(query)
 
   r = cursor.fetchall()
+  items = [dict(zip([key[0] for key in cursor.description], row)) for row in r]
+
   cursor.close()
   cnx.close()
-
-  return json.dumps(r)
+  return json.dumps(items)
 
 
 @api.route('/annualProd/<year>', methods=['GET'])
@@ -29,10 +30,12 @@ def getYearProd(year):
   cursor.execute(query)
 
   r = cursor.fetchall()
+
+  items = [dict(zip([key[0] for key in cursor.description], row)) for row in r]
+
   cursor.close()
   cnx.close()
-
-  return json.dumps(r)
+  return json.dumps(items)
 
 
 
