@@ -8,7 +8,7 @@ api = Flask(__name__)
 
 @api.route('/annualProd', methods=['GET'])
 def getAnnualProd():
-  cnx = mysql.connector.connect(user=os.getenv('DB_USER'), password=os.getenv('DB_PWD'), host=os.getenv('DB_HOST'), database='codev')
+  cnx = mysql.connector.connect(user=os.getenv('DB_USER'), password=os.getenv('DB_PWD'), host=os.getenv('DB_HOST'), database=os.getenv('DB'))
   cursor = cnx.cursor()
 
   query = ("SELECT * FROM prodannée")
@@ -24,7 +24,7 @@ def getAnnualProd():
 
 @api.route('/annualProd/<year>', methods=['GET'])
 def getYearProd(year):
-  cnx = mysql.connector.connect(user=os.getenv('DB_USER'), password=os.getenv('DB_PWD'), host=os.getenv('DB_HOST'), database='codev')
+  cnx = mysql.connector.connect(user=os.getenv('DB_USER'), password=os.getenv('DB_PWD'), host=os.getenv('DB_HOST'), database=os.getenv('DB'))
   cursor = cnx.cursor()
 
   query = ("SELECT * FROM prodannée WHERE année = " + year)
