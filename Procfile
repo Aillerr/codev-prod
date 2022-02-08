@@ -1,1 +1,1 @@
-web: gunicorn codevProd:app
+web: python codevProd.py

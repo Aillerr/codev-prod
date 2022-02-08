@@ -43,4 +43,5 @@ def getYearProd(year):
 
 
 if __name__ == '__main__':
-    api.run() 
+    port = int(os.environ.get('PORT', 5000))
+    api.run(port=port) 
