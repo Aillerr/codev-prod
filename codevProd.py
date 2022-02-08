@@ -1,4 +1,3 @@
-from msilib.schema import Environment
 from flask import Flask
 import mysql.connector
 import json
