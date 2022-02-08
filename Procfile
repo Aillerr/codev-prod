@@ -1,1 +1,1 @@
-web: gunicorn codevProd.wsgi
+web: gunicorn codevProd:app
