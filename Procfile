@@ -1,1 +1,1 @@
-worker: python codevProd.py
+web: gunicorn codevProd:api
