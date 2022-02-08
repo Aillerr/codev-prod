@@ -1,13 +1,15 @@
+from msilib.schema import Environment
 from flask import Flask
 import mysql.connector
 import json
+import os
 
 
 api = Flask(__name__)
 
 @api.route('/annualProd', methods=['GET'])
 def getAnnualProd():
-  cnx = mysql.connector.connect(user='root', password='', host='127.0.0.1', database='codev')
+  cnx = mysql.connector.connect(user=os.getenv('DB_USER'), password=os.getenv('DB_PWD'), host=os.getenv('DB_HOST'), database='codev')
   cursor = cnx.cursor()
 
   query = ("SELECT * FROM prodannée")
@@ -23,7 +25,7 @@ def getAnnualProd():
 
 @api.route('/annualProd/<year>', methods=['GET'])
 def getYearProd(year):
-  cnx = mysql.connector.connect(user='root', password='', host='127.0.0.1', database='codev')
+  cnx = mysql.connector.connect(user=os.getenv('DB_USER'), password=os.getenv('DB_PWD'), host=os.getenv('DB_HOST'), database='codev')
   cursor = cnx.cursor()
 
   query = ("SELECT * FROM prodannée WHERE année = " + year)
