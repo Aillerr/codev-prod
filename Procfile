@@ -1,1 +1,1 @@
-web: python codevProd.py
+worker: python codevProd.py
